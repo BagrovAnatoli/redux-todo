@@ -1,0 +1,18 @@
+.list {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    padding-left: 0px;
+}
+
+.list_hidden {
+    display: none;
+}
+
+.list-items {
+    cursor: pointer;
+}
+
+.list-items:hover {
+    color: Khaki;
+}
