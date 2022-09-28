@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../store/actions/creators/todo";
+//import { addTodo } from "../../store/actions/creators/todo";
+import { createTodo } from "../../store/actions/thunks/todo";
 import { Filter } from "../filter";
 
 import styles from "./index.module.css";
@@ -14,7 +15,7 @@ export const AddTodo = () => {
   };
 
   const handleAddTodo = () => {
-    dispatch(addTodo(value));
+    dispatch(createTodo(value));
     setValue("");
   };
 
