@@ -1,25 +1,29 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import { todosSelector, todosLoadingSelector, todosErrorSelector } from "../../store/selectors/todo";
+// import { useEffect } from 'react';
+// import { useSelector, useDispatch } from "react-redux";
+// import { todosSelector, todosLoadingSelector, todosErrorSelector } from "../../store/selectors/todo";
 import { Todo } from "../todo";
-import { fetchTodos } from '../../store/actions/thunks/todo';
+// import { fetchTodos } from '../../store/actions/thunks/todo';
 
 import styles from './index.module.css';
 
+import { useGetAllTodosQuery } from "../../services/todo";
+
 export const TodoList = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const todos = useSelector(todosSelector);
-  const loading = useSelector(todosLoadingSelector);
-  const error = useSelector(todosErrorSelector);
+  // const todos = useSelector(todosSelector);
+  // const loading = useSelector(todosLoadingSelector);
+  // const error = useSelector(todosErrorSelector);
 
-  const isEmptyList = !loading && !todos?.length;
+  const { data, error, isLoading } = useGetAllTodosQuery();
 
-  useEffect(() => {
-    dispatch(fetchTodos());
-  }, []);
+  const isEmptyList = !isLoading && !data?.length;
 
-  if (loading) {
+  // useEffect(() => {
+  //   dispatch(fetchTodos());
+  // }, []);
+
+  if (isLoading) {
     return <p>Loading...</p>;
   }
 
@@ -33,7 +37,7 @@ export const TodoList = () => {
 
   return (
     <ul className={styles.list}>
-      {todos.map((todo) => (
+      {data.map((todo) => (
         <Todo key={todo.id} todo={todo} />
       ))}
     </ul>
