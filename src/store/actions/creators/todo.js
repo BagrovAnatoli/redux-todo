@@ -31,15 +31,15 @@ export const fetchTodosFailure = (error) => ({
     }
 });
 
+export const addTodoStarted = () => ({
+    type: ADD_TODO_STARTED,
+});
+
 export const addTodoSuccess = (todo) => ({
     type: ADD_TODO_SUCCESS,
     payload: {
         ...todo,
     }
-});
-
-export const addTodoStarted = () => ({
-    type: ADD_TODO_STARTED,
 });
 
 export const addTodoFailure = (error) => ({

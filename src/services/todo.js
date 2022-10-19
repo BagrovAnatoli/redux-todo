@@ -31,7 +31,8 @@ export const todoApi = createApi({
                     body,
                 };
             },
-            invalidatesTags: (post) => [{ type: DATA_TAG.type, id: post?.id }],
+             invalidatesTags: (post) => [{ type: DATA_TAG.type, id: post?.id }],
+            // invalidatesTags: [DATA_TAG],
         }),
     }),
 });

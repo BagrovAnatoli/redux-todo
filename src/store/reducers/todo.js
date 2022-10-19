@@ -132,14 +132,14 @@ export default function todoReducer(state = initialState, action) {
             return {
                 ...state,
 
-                todos: state.todos.map((todo) => todo.id === id
+                todos: [...state.todos.map((todo) => todo.id === id
                     ? {
                         ...todo,
                         completed: !todo.completed,
                     } 
                     :{
                         ...todo,
-                    }),
+                    })],
             };
         }
         
